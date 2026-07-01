@@ -15,6 +15,9 @@
 
 ---
 
+> **Status:** Active Development (Alpha)  
+> DeviceOS is an experimental IoT platform under active development. Core runtime, simulator, cloud backend, and dashboard are functional. Flutter companion app and real hardware support are in progress.
+
 ## What is DeviceOS?
 
 DeviceOS is a production-grade, hardware-independent IoT platform. It allows developers to **design, simulate, provision, monitor, and manage connected devices** before purchasing any physical hardware.
