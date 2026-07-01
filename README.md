@@ -5,11 +5,20 @@
 **An IoT Runtime, Cloud Platform, Simulator, and Companion App**  
 *Build, test, and manage connected devices — without hardware dependencies.*
 
-[![Version](https://img.shields.io/badge/version-v0.1.0--alpha-blue?style=flat-square)](https://github.com/karanchhunchha/DeviceOS/releases)
+[![Version](https://img.shields.io/badge/version-v0.1.0--alpha-blue?style=flat-square)](https://github.com/Karanchhunchha/DeviceOS/releases)
 [![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
 [![Go](https://img.shields.io/badge/Go-1.22-00ADD8?style=flat-square&logo=go)](https://golang.org)
 [![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js)](https://nextjs.org)
+[![C++](https://img.shields.io/badge/C%2B%2B-17-00599C?style=flat-square&logo=c%2B%2B)](https://en.cppreference.com/w/cpp/17)
 [![Status](https://img.shields.io/badge/status-active--development-orange?style=flat-square)]()
+
+---
+
+<p align="center">
+  📘 <a href="DeviceOS_Master_PRD.md">Master PRD</a> &nbsp;•&nbsp;
+  🏗 <a href="docs/adr/005_bidirectional_state_synchronization.md">Architecture</a> &nbsp;•&nbsp;
+  📍 <a href="#roadmap">Roadmap</a>
+</p>
 
 </div>
 
