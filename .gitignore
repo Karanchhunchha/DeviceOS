@@ -1,0 +1,89 @@
+# ─────────────────────────────────────────────
+# DeviceOS — .gitignore
+# ─────────────────────────────────────────────
+
+# ─── Go Binaries & Build Artifacts ───────────
+*.exe
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+/cloud/tmp/
+/cli/tmp/
+deviceos.db
+deviceos.db-shm
+deviceos.db-wal
+
+# ─── Go Module Cache ──────────────────────────
+vendor/
+
+# ─── C++ Build Artifacts ──────────────────────
+build/
+cmake-build-*/
+*.o
+*.a
+*.elf
+*.bin
+*.hex
+*.map
+*.d
+CMakeCache.txt
+CMakeFiles/
+Makefile
+compile_commands.json
+
+# ─── Next.js / Node ───────────────────────────
+node_modules/
+.next/
+out/
+dist/
+.env
+.env.local
+.env.*.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ─── Flutter / Dart ───────────────────────────
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+pubspec.lock
+*.g.dart
+*.freezed.dart
+build/
+
+# ─── IDE / Editor ─────────────────────────────
+.vscode/
+.idea/
+*.iml
+*.suo
+*.user
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# ─── OS ───────────────────────────────────────
+.DS_Store
+ehthumbs.db
+Desktop.ini
+
+# ─── Test Artifacts ───────────────────────────
+coverage.out
+coverage.html
+*.prof
+
+# ─── Temporary QA / Test Scripts ─────────────
+test_fetch.js
+qa_test.js
+provision_all.sh
+
+# ─── Secrets ──────────────────────────────────
+*.pem
+*.key
+*.crt
+*.p12
+device_config.json
