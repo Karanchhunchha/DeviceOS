@@ -78,7 +78,6 @@ coverage.html
 
 # ─── Temporary QA / Test Scripts ─────────────
 test_fetch.js
-qa_test.js
 provision_all.sh
 
 # ─── Secrets ──────────────────────────────────
