@@ -178,7 +178,7 @@ RUNNING                  ← Telemetry loop starts, publishes every 3-6s
 
 ## Automated QA
 
-Run the full 10-test end-to-end suite:
+Run the public end-to-end test suite:
 
 ```bash
 # With all 3 services running:
@@ -200,6 +200,17 @@ node qa_test.js
 ✅ Non-existent device → 404 (expected)
 ✅ Live telemetry: temperature changing between polls
 ```
+
+### 🔒 Internal QA Pipeline
+
+DeviceOS has a **private, multi-layer automated QA workflow** running internally. This pipeline orchestrates:
+
+- **Layer 1 — Unit Tests:** Go, Dart, and C++ unit tests run in isolation.
+- **Layer 2 — Integration Tests:** Full stack spun up automatically; provisioning, shadow sync, and telemetry flows are tested end-to-end.
+- **Layer 3 — Regression Suite:** BLE mock handshake, WebSocket live-stream, and device shadow delta verification run after every change.
+- **Layer 4 — Edge Simulation:** A scripted Python agent simulates real ESP32 behavior and validates cloud responses.
+
+> The internal pipeline tooling and CI configuration are not open-sourced at this time. Contributors and collaborators may request access privately.
 
 ---
 
@@ -235,11 +246,11 @@ DeviceOS/
 
 ## Roadmap
 
-- [x] v0.1.0-alpha — Simulation Platform MVP
-- [ ] v0.2.0 — Flutter Companion App
-- [ ] v0.3.0 — Enterprise Dashboard + Digital Twin
-- [ ] v0.4.0 — Fleet Management + OTA Campaigns
-- [ ] v1.0.0 — ESP32 Hardware Integration
+- [x] **v0.1.0-alpha** — Simulation Platform MVP
+- [x] **v0.2.0-beta** — Flutter Companion App (BLE Provisioning + Live Digital Twin) 🎉
+- [ ] v0.3.0 — Offline Rules Engine + Enterprise Dashboard
+- [ ] v0.4.0 — Fleet Management + OTA Deployment Engine
+- [ ] v1.0.0 — Real ESP32 Hardware Integration
 
 ---
 
