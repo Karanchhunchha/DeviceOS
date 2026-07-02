@@ -148,3 +148,27 @@ func (db *DB) UpdateShadow(deviceId string, newVersion int, reported, desired st
 
 	return nil
 }
+
+func (db *DB) ListDevices() ([]string, error) {
+	const query = "SELECT id FROM devices ORDER BY created_at DESC;"
+	rows, err := db.Conn.Query(query)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	var devices []string
+	for rows.Next() {
+		var id string
+		if err := rows.Scan(&id); err != nil {
+			return nil, err
+		}
+		devices = append(devices, id)
+	}
+
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+
+	return devices, nil
+}

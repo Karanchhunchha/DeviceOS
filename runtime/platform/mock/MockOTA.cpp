@@ -1,4 +1,5 @@
 #include "MockOTA.h"
+#include <iostream>
 
 namespace DeviceOS {
     namespace Platform {
@@ -92,6 +93,8 @@ namespace DeviceOS {
             }
             // Swap active partition flag
             m_activePartition = 1 - m_activePartition;
+            std::cout << "[OTA] Partition swapped. Booting from partition " << m_activePartition << "..." << std::endl;
+            std::cout << "[OTA] Firmware version update simulation: v1.0 -> v1.1" << std::endl;
             return Result<void>();
         }
 

@@ -93,7 +93,7 @@ func (t *HTTPProvisioningTransport) StartAdvertising(ctx context.Context, device
 	})
 
 	t.server = &http.Server{
-		Addr:    fmt.Sprintf(":%d", t.port),
+		Addr:    fmt.Sprintf("0.0.0.0:%d", t.port),
 		Handler: mux,
 	}
 

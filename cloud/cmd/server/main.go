@@ -83,6 +83,30 @@ func (s *Server) handleRegister(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
+func (s *Server) handleListDevices(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodGet {
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+		return
+	}
+
+	devices, err := s.DB.ListDevices()
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	// For MVP, if there are no devices, return an empty array instead of null
+	if devices == nil {
+		devices = []string{}
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	_ = json.NewEncoder(w).Encode(map[string]interface{}{
+		"devices": devices,
+	})
+}
+
 func (s *Server) handleShadow(w http.ResponseWriter, r *http.Request) {
 	pathParts := strings.Split(r.URL.Path, "/")
 	if len(pathParts) < 5 || pathParts[2] != "devices" || pathParts[4] != "shadow" {
@@ -197,7 +221,7 @@ func (s *Server) putShadowHandler(w http.ResponseWriter, r *http.Request, device
 }
 
 func main() {
-	port := flag.String("port", ":8080", "HTTP server port binding")
+	port := flag.String("port", "0.0.0.0:8082", "HTTP server port binding")
 	dbPath := flag.String("db", "deviceos.db", "SQLite database path")
 	flag.Parse()
 
@@ -212,6 +236,7 @@ func main() {
 
 	// Routes
 	http.HandleFunc("/v1/devices/register", srv.handleRegister)
+	http.HandleFunc("/v1/devices", srv.handleListDevices)
 	http.HandleFunc("/v1/devices/", srv.handleShadow)
 	http.HandleFunc("/v1/console", srv.handleConsoleSocket) // WebSocket endpoint
 

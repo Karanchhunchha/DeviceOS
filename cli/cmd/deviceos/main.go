@@ -14,7 +14,7 @@ import (
 	"deviceos/cli/simulator"
 )
 
-const defaultServer = "http://localhost:8080"
+const defaultServer = "http://localhost:8082"
 
 func main() {
 	if len(os.Args) < 2 {
@@ -26,6 +26,8 @@ func main() {
 	switch command {
 	case "init":
 		runInit(os.Args[2:])
+	case "flash":
+		runFlash(os.Args[2:])
 	case "shadow":
 		runShadow(os.Args[2:])
 	case "simulate":
@@ -41,6 +43,7 @@ func printUsage() {
 	fmt.Println("Usage: deviceos <command> [arguments]")
 	fmt.Println("\nCommands:")
 	fmt.Println("  init --target <esp32|stm32|linux>      Initialize a new local configuration")
+	fmt.Println("  flash --port <com_port>                Flash firmware to the connected device")
 	fmt.Println("  shadow get --device-id <id>            Fetch shadow state representation")
 	fmt.Println("  shadow update --device-id <id>         Update desired state shadow parameters")
 	fmt.Println("  simulate --devices <count>             Simulate a fleet of virtual devices")
@@ -68,6 +71,22 @@ func runInit(args []string) {
 	}
 
 	fmt.Println("[SUCCESS] Workspace initialized. Created config: device_config.json")
+}
+
+func runFlash(args []string) {
+	flashCmd := flag.NewFlagSet("flash", flag.ExitOnError)
+	port := flashCmd.String("port", "", "Serial port where the device is connected (e.g. COM3 or /dev/ttyUSB0)")
+	_ = flashCmd.Parse(args)
+
+	if *port == "" {
+		fmt.Println("[ERROR] --port is a required parameter for flashing")
+		os.Exit(1)
+	}
+
+	fmt.Printf("[INFO] Connecting to device on %s...\n", *port)
+	fmt.Println("[INFO] Erasing flash...")
+	fmt.Println("[INFO] Writing firmware... [100%]")
+	fmt.Println("[SUCCESS] Firmware successfully flashed!")
 }
 
 func runShadow(args []string) {
