@@ -32,6 +32,18 @@
 > **🎉 End-to-End Milestone Reached! (v0.2.0-beta)**  
 > The core infrastructure of DeviceOS is officially ALIVE! We have successfully engineered and verified the complete architecture: **BLE Provisioning → Go Cloud Backend → WebSocket Streaming → Live Flutter Digital Twin.** The Flutter App can mock ESP32 BLE provisioning to another phone, push telemetry via a Python edge simulator, and instantly render Live Digital Twin sparkline graphs.
 
+## Project Status (Against PRD)
+
+**Overall Completion: ~55-60%**
+
+| Phase | PRD Scope | Status | % |
+|---|---|---|---|
+| **Phase 1: Foundation** | HAL interfaces, BLE GATT provisioning, offline cache | ✅ HAL done, ✅ Offline cache done, ⚠️ BLE **real hardware** pending (mock only) | ~80% |
+| **Phase 2: Cloud Sync** | Registry + Shadow API, state sync deltas, CLI commands | ✅ Registry/Shadow API done, ✅ State sync done, ✅ CLI commands implemented | ~85% |
+| **Phase 3: Rollouts & Management** | Dual-partition OTA on ESP32, Next.js console, rules engine | ⚠️ OTA mock flow complete, ✅ Dashboard/console exists, 🚧 Rules engine local mock implemented | ~50% |
+| **Phase 4: Swarm & Matter** | Matter/Thread, P2P mesh, edge AI warnings | ❌ 0% — Not started | 0% |
+
+
 ## What is DeviceOS?
 
 DeviceOS is a production-grade, hardware-independent IoT platform. It allows developers to **design, simulate, provision, monitor, and manage connected devices** before purchasing any physical hardware.
